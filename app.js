@@ -1,27 +1,23 @@
 var express = require('express');
 const bodyParser= require('body-parser')
+const mongoose = require('mongoose')
 
-const MongoClient = require('mongodb').MongoClient
-const mongoConnectionString = process.env.MONGO_CONNECTION;
+const app = express()
+mongoose.set('useUnifiedTopology', true);
+mongoose.connect(process.env.MONGO_CONNECTION, { useNewUrlParser: true })
 
-var app = express();
-
-// //Mongo connection
-// MongoClient.connect(mongoConnectionString, {
-//     useUnifiedTopology: true
-//   }, (err, client) => {
-//     if (err) return console.error(err)
-//     console.log('Connected to Database')
-//   })
+const db = mongoose.connection
+db.on('error', (error) => console.error(error))
+db.once('open', () => console.log('connected to database'))
 
 
+app.use(express.json())
 
-app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/', function (req, res) {
+const tokensRouter = require('./routes/token')
+app.use('/tokens', tokensRouter)
 
-});
 
 app.listen(3000, function () {
-  console.log('Listening on port 3000!');
+    console.log('Listening on port 3000!');
 });
