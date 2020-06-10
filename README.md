@@ -2,7 +2,7 @@
 Backend for Mewkat Palace
 
 ## Run with Docker
-Put your mongodb URI into docker-compose MONGO_CONNECTION variable environment.
+Put your mongodb URI into docker-compose MONGO_CONNECTION environment variable.
 
 Then run the container with:
 ```
