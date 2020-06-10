@@ -15,8 +15,10 @@ app.use(express.json())
 
 
 const tokensRouter = require('./routes/token')
-app.use('/tokens', tokensRouter)
+const reviewsRouter = require('./routes/review')
 
+app.use('/tokens', tokensRouter)
+app.use('/reviews', reviewsRouter)
 
 app.listen(3000, function () {
     console.log('Listening on port 3000!');
