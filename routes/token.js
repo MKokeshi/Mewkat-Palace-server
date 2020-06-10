@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Token = require('../models/token')
+const tokenMiddleware = require('../middlewares/token')
 
 // Get all Tokens
 router.get('/', async (req, res) => {
@@ -27,12 +28,12 @@ router.post('/', async (req, res) => {
 })
 
 // Get One Token
-router.get('/:id', getToken, (req, res) => {
+router.get('/:id', tokenMiddleware.getToken, (req, res) => {
     res.json(res.token)
 })
 
 // Delete one Token
-router.delete('/:id', getToken, async (req, res) => {
+router.delete('/:id', tokenMiddleware.getToken, async (req, res) => {
     try {
       await res.token.remove()
       res.json({ message: 'Deleted This Token' })
@@ -42,7 +43,7 @@ router.delete('/:id', getToken, async (req, res) => {
 })
 
 // Update Token
-router.patch('/:id', getToken, async (req, res) => {
+router.patch('/:id', tokenMiddleware.getToken, async (req, res) => {
     if (req.body.token != null) {
       res.subscriber.token = req.body.token
     }
@@ -54,21 +55,5 @@ router.patch('/:id', getToken, async (req, res) => {
     }
   
 })
-
-
-async function getToken(req, res, next) {
-    try {
-      token = await Token.findById(req.params.id)
-      if (token == null) {
-        return res.status(404).json({ message: 'Cant find token'})
-      }
-    } catch(err){
-      return res.status(500).json({ message: err.message })
-    }
-  
-    res.token = token
-    next()
-}
-
 
 module.exports = router;
