@@ -28,12 +28,12 @@ router.post('/', async (req, res) => {
 })
 
 // Get One Token
-router.get('/:id', tokenMiddleware.getToken, (req, res) => {
+router.get('/:id', tokenMiddleware.getTokenById, (req, res) => {
     res.json(res.token)
 })
 
 // Delete one Token
-router.delete('/:id', tokenMiddleware.getToken, async (req, res) => {
+router.delete('/:id', tokenMiddleware.getTokenById, async (req, res) => {
     try {
       await res.token.remove()
       res.json({ message: 'Deleted This Token' })
@@ -43,7 +43,7 @@ router.delete('/:id', tokenMiddleware.getToken, async (req, res) => {
 })
 
 // Update Token
-router.patch('/:id', tokenMiddleware.getToken, async (req, res) => {
+router.patch('/:id', tokenMiddleware.getTokenById, async (req, res) => {
     if (req.body.token != null) {
       res.subscriber.token = req.body.token
     }
