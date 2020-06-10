@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Token = require('../models/review')
+const Review = require('../models/review')
 
 // Get all Reviews
 router.get('/', async (req, res) => {

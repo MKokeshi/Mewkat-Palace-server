@@ -2,15 +2,15 @@ const mongoose = require('mongoose')
 
 const reviewSchema = new mongoose.Schema({
     token: {
-      token: String,
+      type: String,
       required: true
     },
-    stars:{
-        stars: Number,
+    stars: {
+        type: Number,
         required: true
     },
-    message:{
-        message: String,
+    message: {
+        type: String,
         required: false
     }
 })
