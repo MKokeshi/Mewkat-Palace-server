@@ -6,7 +6,7 @@ const tokenMiddleware = require('../middlewares/token')
 
 
 /**
- * @api {get} /review/ Request Reviews informations
+ * @api {get} /reviews/ Request Reviews informations
  * @apiName GetReviews
  * @apiGroup Review
  *
@@ -42,7 +42,7 @@ router.get('/', async (req, res) => {
 
 
 /**
- * @api {post} /review/ Create new review
+ * @api {post} /reviews/ Create new review
  * @apiName CreateReview
  * @apiGroup Review
  * 
@@ -89,7 +89,7 @@ router.post('/',  tokenMiddleware.getTokenByValue, async (req, res) => {
 
 
 /**
- * @api {get} /review/:id Request Review informations
+ * @api {get} /reviews/:id Request Review informations
  * @apiName GetReview
  * @apiGroup Review
  *
@@ -121,7 +121,7 @@ router.get('/:id', getReview, (req, res) => {
 })
 
 /**
- * @api {delete} /review/:id Delete Review
+ * @api {delete} /reviews/:id Delete Review
  * @apiName DeleteReview
  * @apiGroup Review
  *
@@ -145,7 +145,7 @@ router.delete('/:id', getReview, async (req, res) => {
 })
 
 /**
- * @api {put} /review/:id Edit Review
+ * @api {put} /reviews/:id Edit Review
  * @apiName EditReview
  * @apiGroup Review
  *
@@ -154,7 +154,6 @@ router.delete('/:id', getReview, async (req, res) => {
  * @apiParam {Number} stars Review stars (optional).
  * @apiParam {String} message Review message (optional).
  *
- * @apiSuccess {String} message Deleted this Review.
  *
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found

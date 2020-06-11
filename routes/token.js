@@ -3,7 +3,27 @@ const router = express.Router()
 const Token = require('../models/token')
 const tokenMiddleware = require('../middlewares/token')
 
-// Get all Tokens
+/**
+ * @api {get} /tokens/ Request Tokens
+ * @apiName GetTokens
+ * @apiGroup Token
+ *
+ * @apiSuccessExample Success-Response:
+ *
+ *  [
+    {
+        "_id": "object-id",
+        "token": "token",
+        "__v": 0
+    },
+    {
+        "_id": "object-id",
+        "token": "token",
+        "__v": 0
+    }]
+ *     
+ *
+**/
 router.get('/', async (req, res) => {
     try {
       const tokens = await Token.find()
@@ -13,7 +33,31 @@ router.get('/', async (req, res) => {
     }
 })
 
-// Create one Token
+
+/**
+ * @api {post} /tokens/ Create new token
+ * @apiName CreateToken
+ * @apiGroup Token
+ * 
+ * @apiParam {String} token Token.
+ *
+ * @apiSuccess {ObjectId} _id id of the Token.
+ * @apiSuccess {String} token Token.
+ *
+ * @apiSuccessExample Success-Response:
+ *     {
+    "_id": "object-id",
+    "token": "token",
+    "__v": 0
+    }
+ *
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "error": "Can't find token"
+ *     }
+ */
 router.post('/', async (req, res) => {
     const token = new Token({
       token: req.body.token,
@@ -27,12 +71,50 @@ router.post('/', async (req, res) => {
     }
 })
 
-// Get One Token
+/**
+ * @api {get} /tokens/:id Request Token informations
+ * @apiName GetToken
+ * @apiGroup Token
+ *
+ *
+ * @apiSuccess {ObjectId} _id id of the Review.
+ * @apiSuccess {String} token Token.
+ *
+ * @apiSuccessExample Success-Response:
+ *     {
+    "_id": "object-id",
+    "token": "token",
+    "__v": 0
+    }
+ *
+ * @apiError ReviewNotFound The id of the Review was not found.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "message": "Cant find review"
+ *     }
+ */
 router.get('/:id', tokenMiddleware.getTokenById, (req, res) => {
     res.json(res.token)
 })
 
-// Delete one Token
+
+/**
+ * @api {delete} /tokens/:id Delete Token
+ * @apiName DeleteToken
+ * @apiGroup Token
+ *
+ * @apiParam {Number} id Review unique ID.
+ *
+ * @apiSuccess {String} message Deleted this Token.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "message": "Cant find token"
+ *     }
+ */
 router.delete('/:id', tokenMiddleware.getTokenById, async (req, res) => {
     try {
       await res.token.remove()
@@ -42,7 +124,23 @@ router.delete('/:id', tokenMiddleware.getTokenById, async (req, res) => {
     }
 })
 
-// Update Token
+/**
+ * @api {put} /tokens/:id Edit Token
+ * @apiName EditToken
+ * @apiGroup Token
+ *
+ * @apiParam {Number} id Review unique ID.
+ * @apiParam {String} token Token.
+ *
+ * @apiParam {Number} id Token unique ID.
+ * @apiParam {String} token Token.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "message": "Cant find token"
+ *     }
+ */
 router.patch('/:id', tokenMiddleware.getTokenById, async (req, res) => {
     if (req.body.token != null) {
       res.subscriber.token = req.body.token
