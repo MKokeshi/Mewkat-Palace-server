@@ -16,9 +16,9 @@ async function getTokenById(req, res, next) {
 
 async function getTokenByValue(req, res, next) {
     try {
-        token = await Token.find({'token' : req.params.token})
+        token = await Token.findOne({token: req.body.token})
         if (token == null) {
-        return res.status(404).json({ message: 'Cant find token'})
+            return res.status(404).json({ message: 'Cant find token'})
         }
     } catch(err){
         return res.status(500).json({ message: err.message })

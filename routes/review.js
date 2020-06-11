@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const Review = require('../models/review')
+const Token = require('../models/token')
+const tokenMiddleware = require('../middlewares/token')
 
 // Get all Reviews
 router.get('/', async (req, res) => {
@@ -14,7 +16,7 @@ router.get('/', async (req, res) => {
 
 
 // Create a Review
-router.post('/', async (req, res) => {
+router.post('/',  tokenMiddleware.getTokenByValue, async (req, res) => {
     const review = new Review({
       token: req.body.token,
       stars: req.body.stars,
@@ -23,6 +25,7 @@ router.post('/', async (req, res) => {
   
     try {
       const newReview = await review.save()
+      await res.token.remove()
       res.status(201).json(newReview)
     } catch (err) {
       res.status(400).json({ message: err.message })

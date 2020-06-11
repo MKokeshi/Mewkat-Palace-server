@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 
 const app = express()
 mongoose.set('useUnifiedTopology', true);
+mongoose.set('useCreateIndex',  true)
 mongoose.connect(process.env.MONGO_CONNECTION, { useNewUrlParser: true })
 
 const db = mongoose.connection

@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const reviewSchema = new mongoose.Schema({
     token: {
       type: String,
+      unique: true,
       required: true
     },
     stars: {
