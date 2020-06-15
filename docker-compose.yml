@@ -3,8 +3,13 @@ version: '3'
 services: 
     node:
         build: .
-        ports:
-            - "3000:3000"
+        hostname: node
         restart: always
         environment: 
-            - MONGO_CONNECTION=""
+            - MONGO_CONNECTION=mongodb://mongo:27017/server
+        ports:
+            - "3000:3000"
+    mongo:
+        image: mongo
+        hostname: mongodb
+        restart: always
