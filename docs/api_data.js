@@ -62,6 +62,20 @@ define({ "api": [
             "optional": false,
             "field": "message",
             "description": "<p>Message of the Review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "like",
+            "description": "<p>Likes of the Review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "dislike",
+            "description": "<p>Dislikes of the Review.</p>"
           }
         ]
       },
@@ -167,6 +181,20 @@ define({ "api": [
             "optional": false,
             "field": "message",
             "description": "<p>Review message (optional).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "like",
+            "description": "<p>Review likes (optional).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "dislike",
+            "description": "<p>Review dislikes (optional).</p>"
           }
         ]
       }
@@ -220,13 +248,27 @@ define({ "api": [
             "optional": false,
             "field": "message",
             "description": "<p>Message of the Review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "like",
+            "description": "<p>Likes of the Review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "dislike",
+            "description": "<p>Dislikes of the Review.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n\"_id\": \"object-id\",\n\"token\": \"token\",\n\"stars\": 5,\n\"message\": \"message\",\n\"__v\": 0\n}",
+          "content": "{\n\"_id\": \"object-id\",\n\"token\": \"token\",\n\"stars\": 5,\n\"message\": \"message\",\n\"like\": 0,\n\"dislike\": 0\n\"__v\": 0\n}",
           "type": "json"
         }
       ]
@@ -264,7 +306,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "\n[\n   {\n       \"_id\": \"object-id\",\n       \"token\": \"token\",\n       \"stars\": 5,\n       \"message\": \"message\",\n       \"__v\": 0\n   },\n   {\n       \"_id\": \"object-id\",\n       \"token\": \"token\",\n       \"stars\": 5,\n       \"message\": \"message\",\n       \"__v\": 0\n   }]",
+          "content": "\n[\n   {\n       \"_id\": \"object-id\",\n       \"token\": \"token\",\n       \"stars\": 5,\n       \"message\": \"message\",\n       \"like\": 0,\n       \"dislike\": 0\n       \"__v\": 0\n   },\n   {\n       \"_id\": \"object-id\",\n       \"token\": \"token\",\n       \"stars\": 5,\n       \"message\": \"message\",\n       \"like\": 0,\n       \"dislike\": 0\n       \"__v\": 0\n   }]",
           "type": "json"
         }
       ]

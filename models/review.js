@@ -13,6 +13,14 @@ const reviewSchema = new mongoose.Schema({
     message: {
         type: String,
         required: false
+    },
+    like: {
+        type: Number,
+        required: true
+    },
+    dislike: {
+        type: Number,
+        required: true
     }
 })
 

@@ -18,6 +18,8 @@ const tokenMiddleware = require('../middlewares/token')
         "token": "token",
         "stars": 5,
         "message": "message",
+        "like": 0,
+        "dislike": 0
         "__v": 0
     },
     {
@@ -25,6 +27,8 @@ const tokenMiddleware = require('../middlewares/token')
         "token": "token",
         "stars": 5,
         "message": "message",
+        "like": 0,
+        "dislike": 0
         "__v": 0
     }]
  *     
@@ -54,6 +58,8 @@ router.get('/', async (req, res) => {
  * @apiSuccess {String} token Token of the Review.
  * @apiSuccess {Number} stars  Stars of the Review.
  * @apiSuccess {String} message  Message of the Review.
+ * @apiSuccess {Number} like  Likes of the Review.
+ * @apiSuccess {Number} dislike  Dislikes of the Review.
  *
  * @apiSuccessExample Success-Response:
  *     {
@@ -75,7 +81,9 @@ router.post('/',  tokenMiddleware.getTokenByValue, async (req, res) => {
     const review = new Review({
       token: req.body.token,
       stars: req.body.stars,
-      message: req.body.message
+      message: req.body.message,
+      like: "0",
+      dislike: "0"
     })
   
     try {
@@ -98,6 +106,8 @@ router.post('/',  tokenMiddleware.getTokenByValue, async (req, res) => {
  * @apiSuccess {String} token Token of the Review.
  * @apiSuccess {Number} stars  Stars of the Review.
  * @apiSuccess {String} message  Message of the Review.
+ * @apiSuccess {Number} like  Likes of the Review.
+ * @apiSuccess {Number} dislike  Dislikes of the Review.
  *
  * @apiSuccessExample Success-Response:
  *     {
@@ -105,6 +115,8 @@ router.post('/',  tokenMiddleware.getTokenByValue, async (req, res) => {
     "token": "token",
     "stars": 5,
     "message": "message",
+    "like": 0,
+    "dislike": 0
     "__v": 0
     }
  *
@@ -153,7 +165,8 @@ router.delete('/:id', getReview, async (req, res) => {
  * @apiParam {String} token Review token (optional).
  * @apiParam {Number} stars Review stars (optional).
  * @apiParam {String} message Review message (optional).
- *
+ * @apiParam {Number} like Review likes (optional).
+ * @apiParam {Number} dislike Review dislikes (optional).
  *
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found
@@ -172,6 +185,14 @@ router.patch('/:id', getReview, async (req, res) => {
 
     if (req.body.message != null) {
         res.subscriber.message = req.body.message
+    }
+
+    if (req.body.like != null) {
+      res.subscriber.like = req.body.like
+    }
+
+    if (req.body.dislike != null){
+      res.subscriber.dislike = req.body.dislike
     }
 
     try {
