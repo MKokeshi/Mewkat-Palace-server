@@ -215,7 +215,7 @@
   {
     "type": "post",
     "url": "/reviews/addLike/:id",
-    "title": "Edit Review",
+    "title": "Add Like",
     "name": "EditReview",
     "group": "Review",
     "parameter": {
@@ -247,7 +247,7 @@
   {
     "type": "post",
     "url": "/reviews/addDislike/:id",
-    "title": "Edit Review",
+    "title": "Add Dislike",
     "name": "EditReview",
     "group": "Review",
     "parameter": {

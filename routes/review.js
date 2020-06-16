@@ -205,7 +205,7 @@ router.patch('/:id', getReview, async (req, res) => {
 })
 
 /**
- * @api {post} /reviews/addLike/:id Edit Review
+ * @api {post} /reviews/addLike/:id Add Like
  * @apiName EditReview
  * @apiGroup Review
  *
@@ -230,7 +230,7 @@ router.post('/addLike/:id', getReview, async (req, res) =>{
 
 
 /**
- * @api {post} /reviews/addDislike/:id Edit Review
+ * @api {post} /reviews/addDislike/:id Add Dislike
  * @apiName EditReview
  * @apiGroup Review
  *
