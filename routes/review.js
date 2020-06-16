@@ -57,6 +57,8 @@ router.get('/', async (req, res) => {
  * @apiParam {String} token Token.
  * @apiParam {Number} stars Review stars.
  * @apiParam {String} message Review message.
+ * @apiParam {String} name Reviewer name.
+ * @apiParam {String} lastname Reviewer lastname.
  *
  * @apiSuccess {ObjectId} _id id of the Review.
  * @apiSuccess {String} name name of the Reviewer.

@@ -92,6 +92,20 @@ define({ "api": [
             "optional": false,
             "field": "message",
             "description": "<p>Review message.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Reviewer name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "lastname",
+            "description": "<p>Reviewer lastname.</p>"
           }
         ]
       }
