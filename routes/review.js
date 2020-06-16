@@ -16,6 +16,8 @@ const tokenMiddleware = require('../middlewares/token')
     {
         "_id": "object-id",
         "token": "token",
+        "name": "Lorenzo",
+        "lastname": "Catania",
         "stars": 5,
         "message": "message",
         "like": 0,
@@ -25,6 +27,8 @@ const tokenMiddleware = require('../middlewares/token')
     {
         "_id": "object-id",
         "token": "token",
+        "name": "Lorenzo",
+        "lastname": "Catania",
         "stars": 5,
         "message": "message",
         "like": 0,
@@ -55,6 +59,8 @@ router.get('/', async (req, res) => {
  * @apiParam {String} message Review message.
  *
  * @apiSuccess {ObjectId} _id id of the Review.
+ * @apiSuccess {String} name name of the Reviewer.
+ * @apiSuccess {String} Lastname lastname of the Reviewer.
  * @apiSuccess {String} token Token of the Review.
  * @apiSuccess {Number} stars  Stars of the Review.
  * @apiSuccess {String} message  Message of the Review.
@@ -65,6 +71,8 @@ router.get('/', async (req, res) => {
  *     {
     "_id": "object-id",
     "token": "token",
+    "name": "Lorenzo",
+    "lastname": "Catania"
     "stars": 5,
     "message": "message",
     "__v": 0
@@ -80,6 +88,8 @@ router.get('/', async (req, res) => {
 router.post('/',  tokenMiddleware.getTokenByValue, async (req, res) => {
     const review = new Review({
       token: req.body.token,
+      name: req.body.name,
+      lastname: req.body.lastname,
       stars: req.body.stars,
       message: req.body.message,
       like: "0",
@@ -104,6 +114,8 @@ router.post('/',  tokenMiddleware.getTokenByValue, async (req, res) => {
  *
  * @apiSuccess {ObjectId} _id id of the Review.
  * @apiSuccess {String} token Token of the Review.
+ * @apiSuccess {String} name Name of the Reviewer.
+ * @apiSuccess {String} lastname Lastname of the Reviewer.
  * @apiSuccess {Number} stars  Stars of the Review.
  * @apiSuccess {String} message  Message of the Review.
  * @apiSuccess {Number} like  Likes of the Review.
@@ -163,6 +175,8 @@ router.delete('/:id', getReview, async (req, res) => {
  *
  * @apiParam {Number} id Review unique ID.
  * @apiParam {String} token Review token (optional).
+ * @apiParam {String} name Name of the Reviewer(optional).
+ * @apiParam {String} lastname Lastname of the Reviewer(optional).
  * @apiParam {Number} stars Review stars (optional).
  * @apiParam {String} message Review message (optional).
  * @apiParam {Number} like Review likes (optional).
@@ -177,6 +191,14 @@ router.delete('/:id', getReview, async (req, res) => {
 router.patch('/:id', getReview, async (req, res) => {
     if (req.body.token != null) {
       res.review.token = req.body.token
+    }
+
+    if (req.body.name != null){
+      res.review.name = req.body.name
+    }
+
+    if (req.body.lastname != null){
+      res.review.lastname = req.body.lastname
     }
 
     if (req.body.stars != null) {

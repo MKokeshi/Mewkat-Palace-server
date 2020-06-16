@@ -110,6 +110,20 @@ define({ "api": [
             "group": "Success 200",
             "type": "String",
             "optional": false,
+            "field": "name",
+            "description": "<p>name of the Reviewer.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Lastname",
+            "description": "<p>lastname of the Reviewer.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
             "field": "token",
             "description": "<p>Token of the Review.</p>"
           },
@@ -146,7 +160,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n\"_id\": \"object-id\",\n\"token\": \"token\",\n\"stars\": 5,\n\"message\": \"message\",\n\"__v\": 0\n}",
+          "content": "{\n\"_id\": \"object-id\",\n\"token\": \"token\",\n\"name\": \"Lorenzo\",\n\"lastname\": \"Catania\"\n\"stars\": 5,\n\"message\": \"message\",\n\"__v\": 0\n}",
           "type": "json"
         }
       ]
@@ -234,6 +248,20 @@ define({ "api": [
           },
           {
             "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name of the Reviewer(optional).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "lastname",
+            "description": "<p>Lastname of the Reviewer(optional).</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "Number",
             "optional": false,
             "field": "stars",
@@ -298,6 +326,20 @@ define({ "api": [
             "optional": false,
             "field": "token",
             "description": "<p>Token of the Review.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name of the Reviewer.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "lastname",
+            "description": "<p>Lastname of the Reviewer.</p>"
           },
           {
             "group": "Success 200",
@@ -370,7 +412,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "\n[\n   {\n       \"_id\": \"object-id\",\n       \"token\": \"token\",\n       \"stars\": 5,\n       \"message\": \"message\",\n       \"like\": 0,\n       \"dislike\": 0\n       \"__v\": 0\n   },\n   {\n       \"_id\": \"object-id\",\n       \"token\": \"token\",\n       \"stars\": 5,\n       \"message\": \"message\",\n       \"like\": 0,\n       \"dislike\": 0\n       \"__v\": 0\n   }]",
+          "content": "\n[\n   {\n       \"_id\": \"object-id\",\n       \"token\": \"token\",\n       \"name\": \"Lorenzo\",\n       \"lastname\": \"Catania\",\n       \"stars\": 5,\n       \"message\": \"message\",\n       \"like\": 0,\n       \"dislike\": 0\n       \"__v\": 0\n   },\n   {\n       \"_id\": \"object-id\",\n       \"token\": \"token\",\n       \"name\": \"Lorenzo\",\n       \"lastname\": \"Catania\",\n       \"stars\": 5,\n       \"message\": \"message\",\n       \"like\": 0,\n       \"dislike\": 0\n       \"__v\": 0\n   }]",
           "type": "json"
         }
       ]
