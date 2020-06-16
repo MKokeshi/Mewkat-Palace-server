@@ -213,6 +213,70 @@
     "groupTitle": "Review"
   },
   {
+    "type": "post",
+    "url": "/reviews/addLike/:id",
+    "title": "Edit Review",
+    "name": "EditReview",
+    "group": "Review",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Review unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Cant find review\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/review.js",
+    "groupTitle": "Review"
+  },
+  {
+    "type": "post",
+    "url": "/reviews/addDislike/:id",
+    "title": "Edit Review",
+    "name": "EditReview",
+    "group": "Review",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Review unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"message\": \"Cant find review\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "./routes/review.js",
+    "groupTitle": "Review"
+  },
+  {
     "type": "get",
     "url": "/reviews/:id",
     "title": "Request Review informations",

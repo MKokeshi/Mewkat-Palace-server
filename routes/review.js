@@ -176,23 +176,23 @@ router.delete('/:id', getReview, async (req, res) => {
  */
 router.patch('/:id', getReview, async (req, res) => {
     if (req.body.token != null) {
-      res.subscriber.token = req.body.token
+      res.review.token = req.body.token
     }
 
     if (req.body.stars != null) {
-        res.subscriber.stars = req.body.stars
+        res.review.stars = req.body.stars
     }
 
     if (req.body.message != null) {
-        res.subscriber.message = req.body.message
+        res.review.message = req.body.message
     }
 
     if (req.body.like != null) {
-      res.subscriber.like = req.body.like
+      res.review.like = req.body.like
     }
 
     if (req.body.dislike != null){
-      res.subscriber.dislike = req.body.dislike
+      res.review.dislike = req.body.dislike
     }
 
     try {
@@ -203,6 +203,56 @@ router.patch('/:id', getReview, async (req, res) => {
     }
   
 })
+
+/**
+ * @api {post} /reviews/addLike/:id Edit Review
+ * @apiName EditReview
+ * @apiGroup Review
+ *
+ * @apiParam {Number} id Review unique ID.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "message": "Cant find review"
+ *     }
+ */
+router.post('/addLike/:id', getReview, async (req, res) =>{
+    res.review.like++
+
+    try {
+      const updatedReview = await res.review.save()
+      res.json(updatedReview)
+    } catch {
+      res.status(400).json({ message: err.message })
+    }
+})
+
+
+/**
+ * @api {post} /reviews/addDislike/:id Edit Review
+ * @apiName EditReview
+ * @apiGroup Review
+ *
+ * @apiParam {Number} id Review unique ID.
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "message": "Cant find review"
+ *     }
+ */
+router.post('/addDislike/:id', getReview, async (req, res) =>{
+  res.review.dislike++
+
+  try {
+    const updatedReview = await res.review.save()
+    res.json(updatedReview)
+  } catch {
+    res.status(400).json({ message: err.message })
+  }
+})
+
 
 
 
