@@ -14,11 +14,15 @@ const tokenMiddleware = require('../middlewares/token')
     {
         "_id": "object-id",
         "token": "token",
+        "name": "Lorenzo",
+        "lastname": "Catania",
         "__v": 0
     },
     {
         "_id": "object-id",
         "token": "token",
+        "name": "Lorenzo",
+        "lastname": "Catania",
         "__v": 0
     }]
  *     
@@ -40,14 +44,20 @@ router.get('/', async (req, res) => {
  * @apiGroup Token
  * 
  * @apiParam {String} token Token.
+ * @apiParam {String} name Name.
+ * @apiParam {String} lastname Lastname.
  *
  * @apiSuccess {ObjectId} _id id of the Token.
  * @apiSuccess {String} token Token.
+ * @apiSuccess {String} Name.
+ * @apiSuccess {String} Lastname.
  *
  * @apiSuccessExample Success-Response:
  *     {
     "_id": "object-id",
     "token": "token",
+    "name": "Lorenzo",
+    "lastname": "Catania"
     "__v": 0
     }
  *
@@ -61,6 +71,8 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     const token = new Token({
       token: req.body.token,
+      name: req.body.name,
+      lastname: req.body.lastname
     })
   
     try {
@@ -84,6 +96,8 @@ router.post('/', async (req, res) => {
  *     {
     "_id": "object-id",
     "token": "token",
+    "name": "Lorenzo",
+    "lastname": "Catania",
     "__v": 0
     }
  *
@@ -130,8 +144,10 @@ router.delete('/:id', tokenMiddleware.getTokenById, async (req, res) => {
  * @apiGroup Token
  *
  * @apiParam {Number} id Review unique ID.
- * @apiParam {String} token Token.
- *
+ * @apiParam {String} token Token (optional).
+ * @apiParam {String} name Name (optional).
+ * @apiParam {String} lastname Lastname (optional)
+ * 
  * @apiParam {Number} id Token unique ID.
  * @apiParam {String} token Token.
  *

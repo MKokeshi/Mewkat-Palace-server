@@ -57,8 +57,6 @@ router.get('/', async (req, res) => {
  * @apiParam {String} token Token.
  * @apiParam {Number} stars Review stars.
  * @apiParam {String} message Review message.
- * @apiParam {String} name Reviewer name.
- * @apiParam {String} lastname Reviewer lastname.
  *
  * @apiSuccess {ObjectId} _id id of the Review.
  * @apiSuccess {String} name name of the Reviewer.
@@ -90,8 +88,8 @@ router.get('/', async (req, res) => {
 router.post('/',  tokenMiddleware.getTokenByValue, async (req, res) => {
     const review = new Review({
       token: req.body.token,
-      name: req.body.name,
-      lastname: req.body.lastname,
+      name: res.token.name,
+      lastname: res.token.lastname,
       stars: req.body.stars,
       message: req.body.message,
       like: "0",

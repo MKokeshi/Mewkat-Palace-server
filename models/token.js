@@ -5,6 +5,14 @@ const tokenSchema = new mongoose.Schema({
       type: String, 
       unique:true,
       required: true
+    },
+    name: {
+      type: String,
+      required: true
+    },
+    lastname: {
+      type: String,
+      required: true
     }
 })
 
