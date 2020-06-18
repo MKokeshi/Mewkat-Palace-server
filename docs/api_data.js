@@ -475,15 +475,15 @@ define({ "api": [
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "Name.",
-            "description": ""
+            "field": "name",
+            "description": "<p>Name.</p>"
           },
           {
             "group": "Success 200",
             "type": "String",
             "optional": false,
-            "field": "Lastname.",
-            "description": ""
+            "field": "lastname",
+            "description": "<p>Lastname.</p>"
           }
         ]
       },
@@ -628,6 +628,20 @@ define({ "api": [
             "optional": false,
             "field": "token",
             "description": "<p>Token.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "lastname",
+            "description": "<p>Lastname.</p>"
           }
         ]
       },

@@ -49,8 +49,8 @@ router.get('/', async (req, res) => {
  *
  * @apiSuccess {ObjectId} _id id of the Token.
  * @apiSuccess {String} token Token.
- * @apiSuccess {String} Name.
- * @apiSuccess {String} Lastname.
+ * @apiSuccess {String} name Name.
+ * @apiSuccess {String} lastname Lastname.
  *
  * @apiSuccessExample Success-Response:
  *     {
@@ -91,6 +91,8 @@ router.post('/', async (req, res) => {
  *
  * @apiSuccess {ObjectId} _id id of the Review.
  * @apiSuccess {String} token Token.
+ * @apiSuccess {String} name Name.
+ * @apiSuccess {String} lastname Lastname.
  *
  * @apiSuccessExample Success-Response:
  *     {
@@ -150,6 +152,8 @@ router.delete('/:id', tokenMiddleware.getTokenById, async (req, res) => {
  * 
  * @apiParam {Number} id Token unique ID.
  * @apiParam {String} token Token.
+ * @apiParam {String} name Name.
+ * @apiParam {String} lastname Lastname.
  *
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found
