@@ -92,20 +92,6 @@ define({ "api": [
             "optional": false,
             "field": "message",
             "description": "<p>Review message.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "name",
-            "description": "<p>Reviewer name.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "lastname",
-            "description": "<p>Reviewer lastname.</p>"
           }
         ]
       }
@@ -450,6 +436,20 @@ define({ "api": [
             "optional": false,
             "field": "token",
             "description": "<p>Token.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "lastname",
+            "description": "<p>Lastname.</p>"
           }
         ]
       }
@@ -470,13 +470,27 @@ define({ "api": [
             "optional": false,
             "field": "token",
             "description": "<p>Token.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Name.",
+            "description": ""
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "Lastname.",
+            "description": ""
           }
         ]
       },
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n\"_id\": \"object-id\",\n\"token\": \"token\",\n\"__v\": 0\n}",
+          "content": "{\n\"_id\": \"object-id\",\n\"token\": \"token\",\n\"name\": \"Lorenzo\",\n\"lastname\": \"Catania\"\n\"__v\": 0\n}",
           "type": "json"
         }
       ]
@@ -560,7 +574,21 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "token",
-            "description": "<p>Token.</p>"
+            "description": "<p>Token (optional).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Name (optional).</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "lastname",
+            "description": "<p>Lastname (optional)</p>"
           }
         ]
       }
@@ -606,7 +634,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "{\n\"_id\": \"object-id\",\n\"token\": \"token\",\n\"__v\": 0\n}",
+          "content": "{\n\"_id\": \"object-id\",\n\"token\": \"token\",\n\"name\": \"Lorenzo\",\n\"lastname\": \"Catania\",\n\"__v\": 0\n}",
           "type": "json"
         }
       ]
@@ -644,7 +672,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success-Response:",
-          "content": "\n[\n   {\n       \"_id\": \"object-id\",\n       \"token\": \"token\",\n       \"__v\": 0\n   },\n   {\n       \"_id\": \"object-id\",\n       \"token\": \"token\",\n       \"__v\": 0\n   }]",
+          "content": "\n[\n   {\n       \"_id\": \"object-id\",\n       \"token\": \"token\",\n       \"name\": \"Lorenzo\",\n       \"lastname\": \"Catania\",\n       \"__v\": 0\n   },\n   {\n       \"_id\": \"object-id\",\n       \"token\": \"token\",\n       \"name\": \"Lorenzo\",\n       \"lastname\": \"Catania\",\n       \"__v\": 0\n   }]",
           "type": "json"
         }
       ]
